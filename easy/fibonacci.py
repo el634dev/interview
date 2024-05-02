@@ -62,14 +62,14 @@ Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 # Recursive Solution
 def fib(n: int) -> int:
     """
-    Time Comp: O(2^n)
-    Space Comp: O(n)
+    Time Comp: O(1)
+    Space Comp: O(1)
     """
     # Base case when n is 0 or 1
-    if n <= 1:
-        return n
+    if n <= 1: # O(1)
+        return n # O(1)
     # Recursively calculate the Fib numbers and return the sum
-    return fib(n - 1) + fib(n - 2)
+    return fib(n - 1) + fib(n - 2) # O(1)
 
 # -------------------
 # Test Cases for fib()
@@ -83,15 +83,17 @@ print(fib(5))
 # Precomputes the next element in the Fib Sequence in advance
 # to perform 'caching' trick iteratively
 def fib2(n: int) -> int:
-    """Runtime: 0(1)"""
+    """
+    Time Complexity: 0(n)
+    """
     # Check if n equals 0 or 1, can omit
-    if n == 0 or n == 1:
-        return n
+    if n == 0 or n == 1: # O(1)
+        return n # O(1)
 
-    las, nxt = 0, 1
-    for _ in range(n):
-        las, nxt = nxt, las + nxt
-    return las
+    las, nxt = 0, 1 # O(1)
+    for _ in range(n): # O(n)
+        las, nxt = nxt, las + nxt # O(1)
+    return las # O(1)
 
 # -------------------
 # Test Cases for fib2()
@@ -103,3 +105,5 @@ print(fib(4))
 # -------------------
 # Clarfying Questions
 # -------------------
+
+# Can I assume the data type will always be numeric?
