@@ -61,6 +61,10 @@ class Recursion:
 # One Liner
 class One:
     def max_depth_2(self, root: Optional[TreeNode]) -> int:
+        """
+        Time Complexity: O(1) -> Constant
+        Space Complexity: O(1) -> Constant
+        """
         return 0 if not root else max(self.max_depth_2(root.left), self.max_depth_2(root.right)) + 1
 
 
@@ -69,29 +73,29 @@ class One:
 class Iterative:
     def max_depth_3(self, root: TreeNode) -> int:
         """
-        Time Complexity:
-        Space Complexity:
+        Time Complexity: O(n)
+        Space Complexity: O(n)
         """
         # Base Case if there is no root
-        if not root:
-            return 0
+        if not root: # O(1)
+            return 0 # O(1)
 
         # Add root in the front
-        tree = deque([root])
+        tree = deque([root]) # O(1)
         # Initlize num_node_level to 1
-        num_node_level = 1
+        num_node_level = 1 # O(1)
         # Initlize levels to 0
-        levels = 0
+        levels = 0 # O(1)
 
-        while tree:
-            node = tree.popleft()
-            if node.left:
-                tree.append(node.left)
-            if node.right:
-                tree.append(node.right)
-            num_node_level -= 1
-            if num_node_level == 0:
-                levels += 1
-                num_node_level = len(tree)
+        while tree: # O(n)
+            node = tree.popleft() # O(1)
+            if node.left: # O(1)
+                tree.append(node.left) # O(1)
+            if node.right: # O(1)
+                tree.append(node.right) # O(1)
+            num_node_level -= 1 # O(1)
+            if num_node_level == 0: # O(1)
+                levels += 1 # O(1)
+                num_node_level = len(tree) # O(1)
 
-        return levels
+        return levels # O(1)
