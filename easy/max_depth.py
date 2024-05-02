@@ -46,16 +46,20 @@ class TreeNode:
 # Recursion
 class Recursion:
     def maxDepth(self, root):
+        """
+        Time Complexity: O(1) -> Constant
+        Space Complexity: O(1) -> Constant
+        """
         # Base Case if there is no root
-        if not root:
-            return 0
+        if not root: # O(1)
+            return 0 # O(1)
 
         # Get the left depth
-        l_depth = self.maxDepth(root.left)
+        l_depth = self.maxDepth(root.left) # O(1)
         # Get the right depth
-        r_depth = self.maxDepth(root.right)
+        r_depth = self.maxDepth(root.right) # O(1)
         # Return the max number from both sides plus 1
-        return max(l_depth,r_depth) + 1
+        return max(l_depth,r_depth) + 1 # O(1)
 
 # --------------
 # One Liner
@@ -73,8 +77,8 @@ class One:
 class Iterative:
     def max_depth_3(self, root: TreeNode) -> int:
         """
-        Time Complexity: O(n)
-        Space Complexity: O(n)
+        Time Complexity: O(n) -> Linear Time
+        Space Complexity: O(n) -> Linear Time
         """
         # Base Case if there is no root
         if not root: # O(1)
