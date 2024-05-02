@@ -56,16 +56,16 @@ def merge_alternately(word1: str, word2: str) -> str:
     Time Complexity: O(n)
     Space Complexity: O(n)
     """
-    res = ""
-    for i in range(min(len(word1),len(word2))):
-        res += word1[i]
-        res += word2[i]
+    res = "" # O(1)
+    for i in range(min(len(word1),len(word2))): # O(n)
+        res += word1[i]  # O(1)
+        res += word2[i]  # O(1)
 
-    if len(word1) > len(word2):
-        res += word1[i+1:]
-    else:
-        res += word2[i+1:]
-    return res
+    if len(word1) > len(word2):  # O(1)
+        res += word1[i+1:]  # O(1)
+    else:  # O(1)
+        res += word2[i+1:]  # O(1)
+    return res  # O(1)
 
 print(merge_alternately("abc", "pqr"))
 print(merge_alternately("ab", "pqrs"))
@@ -74,20 +74,25 @@ print(merge_alternately("abcd", "pq"))
 # -----------------
 # Two Pointers
 def merge_alternately_pointer(word1: str, word2: str) -> str:
-        i, j = 0, 0
-        ans = []
-        while i < len(word1) and j < len(word2):
-            ans.append(word1[i])
-            ans.append(word2[j])
-            i += 1
-            j += 1
-        while i < len(word1):
-            ans.append(word1[i])
-            i += 1
-        while j < len(word2):
-            ans.append(word2[j])
-            j += 1
-        return "".join(ans)
+        """
+        Time Complexity: O(n^2)
+        Space Complexity: O(n^2)
+        """
+        i, j = 0, 0  # O(1)
+        ans = []  # O(1)
+
+        while i < len(word1) and j < len(word2):  # O(n)
+            ans.append(word1[i])  # O(1)
+            ans.append(word2[j])  # O(1)
+            i += 1  # O(1)
+            j += 1  # O(1)
+        while i < len(word1): # O(n)
+            ans.append(word1[i])  # O(1)
+            i += 1  # O(1)
+        while j < len(word2): # O(n)
+            ans.append(word2[j]) # O(1)
+            j += 1  # O(1)
+        return "".join(ans) # O(1)
 
 # --------------------
 # Test cases, two pointers
@@ -101,16 +106,16 @@ from itertools import zip_longest
 
 def merge_alternately_zip(word1: str, word2: str) -> str:
     """
-    Time Complexity: O(n)
-    Space Complexity: O(n)
+    Time Complexity: O(1) -> Constant
+    Space Complexity: O(1) -> Constant
     """
-    return "".join(a + b for a, b in zip_longest(word1, word2, fillvalue = ""))
+    return "".join(a + b for a, b in zip_longest(word1, word2, fillvalue = "")) # O(1)
 
 # --------------------
 # Using Zip, 1 lines
 def merge_alternately_zip_2(word1: str, word2: str) -> str:
     """
-    Time Complexity: O(n)
-    Space Complexity: O(n)
+    Time Complexity:  O(1) -> Constant
+    Space Complexity: O(1) -> Constant
     """
-    return "".join(a + b for a, b in zip(word1, word2)) + word1[len(word2):] + word2[len(word1):]
+    return "".join(a + b for a, b in zip(word1, word2)) + word1[len(word2):] + word2[len(word1):] # O(1)
