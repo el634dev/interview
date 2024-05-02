@@ -77,21 +77,21 @@ class Iterative:
             return 0
 
         # Add root in the front
-        worklist = deque([root])
+        tree = deque([root])
         # Initlize num_node_level to 1
         num_node_level = 1
         # Initlize levels to 0
         levels = 0
 
-        while worklist:
-            node = worklist.popleft()
+        while tree:
+            node = tree.popleft()
             if node.left:
-                worklist.append(node.left)
+                tree.append(node.left)
             if node.right:
-                worklist.append(node.right)
+                tree.append(node.right)
             num_node_level -= 1
             if num_node_level == 0:
                 levels += 1
-                num_node_level = len(worklist)
+                num_node_level = len(tree)
 
         return levels
