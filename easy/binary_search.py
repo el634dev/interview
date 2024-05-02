@@ -41,26 +41,27 @@ Explanation: 2 does not exist in nums so return -1
 # -----------------
 from typing import List
 
-# O(nlogn) Solution
+# O(logn) Solution
 def search(nums: List[int], target: int) -> int:
     """
-    Runtime Comp: O(nlogn)
+    Runtime Comp: O(logn)
     """
     # Assign left the value of 0
-    left = 0
+    left = 0 # O(1)
     # Assign right the last element by subtracting 1 from the length of nums
-    right = len(nums) - 1
+    right = len(nums) - 1 # O(1)
 
-    while(left <= right):
-        middle = (left + right ) // 2
+    while(left <= right): # O(n)
+        middle = (left + right ) // 2 # O(1)
 
-        if nums[middle] == target:
-            return middle
-        elif nums[middle] < target:
-            left = middle + 1
-        else:
-            right = middle - 1
-    return -1
+        if nums[middle] == target: # O(1)
+            return middle # O(1)
+        elif nums[middle] < target: # O(1)
+            left = middle + 1 # O(1)
+        else: # O(1)
+            right = middle - 1 # O(1)
+    return -1 # O(1)
+
 # -------------------
 # Test Cases for search()
 # -------------------
@@ -72,16 +73,16 @@ print(search([-2,0,3,5,9,12], target = 2))
 # Brute Force Solution
 def search2(nums: List[int], target: int) -> int:
     """
-    Runtime Comp: O(n)
+    Time Complexity: O(n)
     """
     # iterates over the elements of the nums array
-    for i in range(0 , len(nums)):
+    for i in range(0 , len(nums)): # O(n)
         # checks if the current element of the array (nums[i]) is equal to the target value
-        if target == nums[i]: 
+        if target == nums[i]: # O(1)
             # returns the current index i, which is the position of the target in the array
-            return i
+            return i # O(1)
     # If target value is not present in the nums array, return -1
-    return -1
+    return -1 # O(1)
 
 # -------------------
 # Test Cases for search2()
@@ -97,16 +98,17 @@ def search3(nums: List[int], target: int) -> int:
     Time Comp: O(n)
     Space Comp: O(1)
     """
-    start , end = 0 , len(nums) - 1
-    while start <= end :
-        mid = (start+end) // 2
-        if nums[mid] == target:
-            return mid
-        elif target < nums[mid]:
-            end = mid -1
-        else :
-            start = mid + 1
-    return -1
+    start , end = 0 , len(nums) - 1 # O(1)
+
+    while start <= end : # O(n)
+        mid = (start+end) // 2 # O(1)
+        if nums[mid] == target: # O(1)
+            return mid # O(1)
+        elif target < nums[mid]: # O(1)
+            end = mid -1 # O(1)
+        else : # O(1)
+            start = mid + 1 # O(1)
+    return -1 # O(1)
 
 # -------------------
 # Test Cases for search3()
