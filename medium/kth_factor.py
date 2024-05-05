@@ -43,23 +43,23 @@ Explanation: Factors list is [1, 2, 4], there is only 3 factors. We should retur
 def kth_factor(n, k):
     """
     Time Complexity: O(n)
-    Space Complexity: O(1)
+    Space Complexity: # O(1)
     """
     # Initialize count to 0, used to keep track of the # of factors
-    count = 0
+    count = 0 # O(1)
 
     # Iterate through all integers from 1 to n inclusive
-    for i in range(1,n + 1):
+    for i in range(1,n + 1): # O(n)
         # If n is divisble by i using the modulo operator
-        if n % i == 0:
+        if n % i == 0: # O(1)
             # Increment count
-            count += 1
+            count += 1 # O(1)
             # If current count equals k
-            if count == k:
+            if count == k: # O(1)
                 # Return the current factor
-                return i
+                return i # O(1)
     # Return -1, indicates that there are fewer than k factors of n
-    return -1
+    return -1 # O(1)
 
 # ------------------------
 def kth_factor2(n: int, k: int) -> int:
@@ -68,29 +68,29 @@ def kth_factor2(n: int, k: int) -> int:
     Space Complexity: O(1)
     """
     # If k is less than n
-    if k > n:
+    if k > n: # O(1)
         # Return -1
-        return -1
+        return -1 # O(1)
 
     # Initlized i to 1
-    i = 1
+    i = 1 # O(1)
     # Initlized i to 0
-    count = 0
+    count = 0 # O(1)
 
     # Looping through i while i less or equal to n
-    while i <= n:
+    while i <= n: # O(n)
         # If n is divisble by i using the mod operator and
         # the remainder is equal to 0
-        if n % i == 0:
+        if n % i == 0: # O(1)
             # Increment the current count by 1
-            count += 1
+            count += 1 # O(1)
 
         # If the current count is equal to k
-        if count == k:
-            # Return i
-            return i
+        if count == k: # O(1)
+            # Return i 
+            return i # O(1)
 
         # Increment i by 1
-        i += 1    
+        i += 1 # O(1)
     # Return -1
-    return -1
+    return -1 # O(1)
