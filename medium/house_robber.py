@@ -38,28 +38,28 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 
 def rob(nums):
     """
-    Time Complexity: O(n)
+    Time Complexity: O(n), where n is nums which is the array or list
     Space Complexity: O(n)
     """
     # Asssign the length of nums to n
-    n = len(nums)
+    n = len(nums) # O(1)
 
     # Base case, where if n equals 0
-    if n == 0:
+    if n == 0: # O(1)
         # Return 0
-        return 0
+        return 0 # O(1)
 
     # Assign the list of [0, 0] to s0 and s1
-    s0, s1 = [0, 0], [0, 0]
+    s0, s1 = [0, 0], [0, 0] # O(1)
     # Assign s1 with the index of 0 to nums with the index of 0
-    s1[0] = nums[0]
+    s1[0] = nums[0] # O(1)
 
     # Loop through i while in range of 1 to n
-    for i in range(1, n):
-        s0[i % 2] = max(s0[(i - 1) % 2], s1[(i - 1) % 2])
-        s1[i % 2] = s0[(i - 1) % 2] + nums[i]
+    for i in range(1, n): # O(n)
+        s0[i % 2] = max(s0[(i - 1) % 2], s1[(i - 1) % 2]) # O(1)
+        s1[i % 2] = s0[(i - 1) % 2] + nums[i] # O(1)
 
-    return max(s0[(n - 1) % 2], s1[(n - 1) % 2])
+    return max(s0[(n - 1) % 2], s1[(n - 1) % 2]) # O(1)
 
 # --------------------
 # Test cases for solve_house
@@ -71,16 +71,16 @@ print(rob([2,7,9,3,1]))
 # Dynamic Programming
 def solve_dp(nums):
     """
-    Time:
-    Space:
+    Time Complexity: O(n) where n is the numbers in the nums array/list
+    Space Complexity: O(n)
     """
-    a,b = 0,0
+    a,b = 0,0 # O(1)
 
-    for n in nums:
-        tmp = max(a + n, b)
-        a = b
-        b = tmp
-    return b
+    for n in nums: # O(n)
+        tmp = max(a + n, b) # O(1)
+        a = b # O(1)
+        b = tmp # O(1)
+    return b # O(1)
 
 # --------------------
 # Test cases for solve_dp
@@ -98,12 +98,12 @@ def solve_tab(nums, n):
     Time: O(n)
     Space: O(n)
     """
-    dp = [0] * (n + 2)
+    dp = [0] * (n + 2) # O(1)
 
-    for i in range(n - 1, -1, -1):
-        dp[i] = max(nums[i] + dp[i + 2], dp[i + 1])
+    for i in range(n - 1, -1, -1): # O(n)
+        dp[i] = max(nums[i] + dp[i + 2], dp[i + 1]) # O(1)
 
-    return dp[0]
+    return dp[0] # O(1)
 
 # --------------------
 # Test cases for solve_tab
