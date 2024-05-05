@@ -54,27 +54,27 @@ from typing import List
 # this method is efficient and commonly used
 def two_sum(nums: List[int], target: int) -> List[int]:
     """
-    Runtime Comp: O(n), where n is the number of elements in the input list nums.
+    Time Complexity: O(n) -> where n is the number of elements in the input list nums.
     This is because the function uses a single loop to iterate through the elements of the input list 
     and store the indices of the elements in a dictionary
     """
     # Store the indices of the numbers
-    num_indices = {}
+    num_indices = {} # O(1)
 
     # Iterate through the list of numbers to find the pair that meets
     # the condition
-    for i, num in enumerate(nums):
+    for i, num in enumerate(nums): # O(n)
         # Calculate the value needed to achieve the target sum
         # by subtracting target from num
-        target_val = target - num
+        target_val = target - num # O(1)
 
         # Check if target_val is present in our dictionary
-        if target_val in num_indices:
+        if target_val in num_indices: # O(1)
             # Return the indices of those numbers
-            return [num_indices[target_val ], i]
+            return [num_indices[target_val ], i] # O(1)
         # If not found then add the current number and its index to the dictionary
         # for future reference
-        num_indices[num] = i
+        num_indices[num] = i # O(1)
 
 # -------------------
 # Test Cases for two_sum()
@@ -87,24 +87,24 @@ print(two_sum([3,3], target = 6))
 # as it involves checking every pair of elements
 def two_sum2(nums: List[int], target: int) -> List[int]:
     """
-    Runtime Comp: O(n^2), where n is the number of elements in the input list nums. 
+    Runtime Comp: O(n^2) -> where n is the number of elements in the input list nums. 
     This is because it has two nested loops that iterate over all pairs of indices in the list, 
     resulting in a quadratic time complexity
     """
     # Get length of nums(list)
-    n = len(nums)
+    n = len(nums) # O(1)
     
     # Iterate over all pairs of indices i and j in the list
     # such that j is greater than i
-    for i in range(n):
+    for i in range(n): # O(n)
         # For each pair of indices
-        for j in range(i + 1, n):
+        for j in range(i + 1, n): # O(n)
             # Check the sum of the elements at those indices is equal to the target
-            if nums[i] + nums[j] == target:
+            if nums[i] + nums[j] == target: # O(1)
                 # Return if found
-                return [i, j]
+                return [i, j] # O(1)
     # Else return a empty list
-    return []
+    return [] # O(1)
 
 # -------------------
 # Test Cases for two_sum()
@@ -116,3 +116,5 @@ print(two_sum2([3,2], target = 5))
 # -------------------
 # Clarfying Questions
 # -------------------
+
+# If the list is empty, can we return an empty list or -1?
