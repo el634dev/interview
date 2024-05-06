@@ -51,26 +51,30 @@ def calculate(s):
     Space Complexity: O(1)
     """
     def evaluate(i):
-        res, digit, sign = 0, 0, 1
+        """
+        Time Complexity: O(n) where n is the string called s
+        Evalute is the helper function
+        """
+        res, digit, sign = 0, 0, 1 # O(1)
 
-        while i < len(s):
-            if s[i].isdigit():
-                digit = digit * 10 + int(s[i])
-            elif s[i] in '+-':
-                res += digit * sign
-                digit = 0
-                sign = 1 if s[i] == '+' else -1
-            elif s[i] == '(':
-                subres, i = evaluate(i+1)
-                res += sign * subres
-            elif s[i] == ')':
-                res += digit * sign
-                return res, i
-            i += 1
+        while i < len(s): # O(n)
+            if s[i].isdigit(): # O(1)
+                digit = digit * 10 + int(s[i]) # O(1)
+            elif s[i] in '+-': # O(1)
+                res += digit * sign # O(1)
+                digit = 0 # O(1)
+                sign = 1 if s[i] == '+' else -1 # O(1)
+            elif s[i] == '(': # O(1)
+                subres, i = evaluate(i+1) # O(1)
+                res += sign * subres # O(1)
+            elif s[i] == ')': # O(1)
+                res += digit * sign # O(1)
+                return res, i # O(1)
+            i += 1 # O(1)
 
-        return res + digit * sign
+        return res + digit * sign # O(1)
 
-    return evaluate(0)
+    return evaluate(0) # O(1)
 
 print(calculate("1 + 1"))
 print(calculate(" 2-1 + 2 "))
@@ -81,36 +85,33 @@ print("-----------------")
 # Stack
 def calculate_2(s: str) -> int:
     """
-    Time Complexity: O(n)
-    Space Complexity: O(n)
+    Time Complexity: O(n) where n is the string called s
+    Space Complexity: O(n) where n is the string called s
     """
-    output, curr, sign, stack = 0, 0, 1, []
-    for c in s:
-        if c.isdigit():
-            curr = (curr * 10) + int(c)
-
-        elif c in '+-':
-            output += curr * sign
-            curr = 0
-            if c == '+':
-                sign = 1
-
+    output, curr, sign, stack = 0, 0, 1, [] # O(1)
+    for c in s: # O(n)
+        if c.isdigit(): # O(1)
+            curr = (curr * 10) + int(c) # O(1)
+        elif c in '+-': # O(1)
+            output += curr * sign # O(1)
+            curr = 0 # O(1)
+            
+            if c == '+': # O(1)
+                sign = 1 # O(1)
             else:
-                sign = -1
+                sign = -1 # O(1)
+        elif c == '(': # O(1)
+            stack.append(output) # O(1)
+            stack.append(sign) # O(1)
+            sign = 1 # O(1)
+            output = 0 # O(1)
+        elif c == ')': # O(1)
+            output += curr * sign # O(1)
+            output *= stack.pop() # sign, O(1)
+            output += stack.pop() # last output, O(1)
+            curr = 0 # O(1)
 
-        elif c == '(':
-            stack.append(output)
-            stack.append(sign)
-            sign = 1
-            output = 0
-
-        elif c == ')':
-            output += curr * sign
-            output *= stack.pop()    #sign
-            output += stack.pop()    #last output
-            curr = 0
-
-    return output + (curr * sign)
+    return output + (curr * sign) # O(1)
 
 print(calculate_2("1 + 1"))
 print(calculate_2(" 2-1 + 2 "))
