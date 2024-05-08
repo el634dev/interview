@@ -41,8 +41,8 @@ Explanation: 2-2 = 1/22 = 1/4 = 0.25
 # Recursive
 def my_pow(x: float, n: int) -> float:
     """
-    Time Complexity: O(log n)
-    Space Complexity: O(log n)
+    Time Complexity: O(1)
+    Space Complexity: O(1)
     """
     # Base Case (n == 0): If the exponent n is zero
     if n == 0: # O(1)
