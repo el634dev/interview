@@ -11,11 +11,12 @@ Space complexity for hash sets is O(n)
 
 def simple_hash(input_string):
     """
-    Calculates the sum of the Unicode values of the characters in a string and then applies modulus 10. 
+    Desc: Calculates the sum of the Unicode values of the characters in a string and then applies modulus 10. 
     This straightforward function converts any string into a hash value between 0 and 9
+    Time Complexity: O(1)
     """
-    summation = sum(ord(ch) for ch in input_string)
-    return summation % 10  # We limit our hash range from 0 to 9
+    summation = sum(ord(ch) for ch in input_string) # O(1)
+    return summation % 10  # We limit our hash range from 0 to 9, O(1)
 
 print(simple_hash('Hello'))  # outputs: 0
 print(simple_hash('world'))  # outputs: 2
@@ -90,35 +91,35 @@ print(new_list)  # Outputs: {'Eggs', 'Ham', 'Jam'}
 print(copied_list)  # Outputs: {'Eggs', 'Jam'}
 
 # ------------------------
+# Importing the necessary libraries
+import time
+
 # Define a function to demonstrate the operation and time complexity of a hash set
 def hash_set_operations():
-    # Importing the necessary libraries
-    import time
-
     # Create a hash set and a list
-    hash_set = set()
-    list_data = []
+    hash_set = set()  # O(1)
+    list_data = [] # O(1)
 
     # Setting the range for the data elements
-    data_range = 10**7
+    data_range = 10**7 # O(1)
 
     # Adding elements to the hash set and the list
-    for i in range(data_range):
-        hash_set.add(i)
-        list_data.append(i)
+    for i in range(data_range): # O(n)
+        hash_set.add(i) # O(1)
+        list_data.append(i) # O(1)
 
     # Define a test element (which is out of the data range and thus is not present in both the list and set)
-    test_element = data_range + 1
+    test_element = data_range + 1 # O(1)
 
     # Start the clock and check for the presence of the test elements in the set
-    start_time = time.time()
-    print("Hash Set Test Result:", test_element in hash_set)
-    print("Searching in the Hash Set Took:", time.time() - start_time)
+    start_time = time.time() # O(1)
+    print("Hash Set Test Result:", test_element in hash_set) # O(1)
+    print("Searching in the Hash Set Took:", time.time() - start_time) # O(1)
 
     # Start the clock and check for the presence of the test elements in the list
-    start_time = time.time()
-    print("List Test Result:", test_element in list_data)
-    print("Searching in the List Took:", time.time() - start_time)
+    start_time = time.time() # O(1)
+    print("List Test Result:", test_element in list_data) # O(1)
+    print("Searching in the List Took:", time.time() - start_time) # O(1)
 
 # Call the function
 hash_set_operations()
